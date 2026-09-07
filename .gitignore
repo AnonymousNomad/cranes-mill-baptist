@@ -1,0 +1,18 @@
+# Local / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+.obsidian/
+
+# Server / env
+.env
+.env.*
+*.local
+
+# Misc
+node_modules/
+dist/
+build/

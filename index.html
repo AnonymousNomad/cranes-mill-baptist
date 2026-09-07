@@ -172,6 +172,30 @@
       [data-reveal] { opacity: 1; transform: none; transition: none; }
     }
 
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      padding: 0.75rem 1.5rem;
+      background: var(--gold);
+      color: var(--navy-deep);
+      font-weight: 600;
+      border-radius: 0 0 var(--radius-md) 0;
+      z-index: 2000;
+      transition: top var(--duration-fast) var(--ease-out);
+    }
+    .skip-link:focus {
+      top: 0;
+      box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.4);
+    }
+    a:focus-visible,
+    button:focus-visible,
+    .btn:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+
     /* ============================================================
        NAVIGATION
        ============================================================ */
@@ -385,7 +409,7 @@
     }
     .hero-sub {
       font-size: clamp(1rem, 2vw, 1.25rem);
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.8);
       max-width: 50ch;
       line-height: 1.7;
       margin-bottom: var(--space-2xl);
@@ -415,7 +439,7 @@
       font-size: 0.65rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.65);
       font-weight: 500;
     }
     .hero-info-value {
@@ -546,7 +570,7 @@
     }
     .services .section-eyebrow { color: var(--gold-light); }
     .services .section-title { color: var(--white); }
-    .services .section-lede { color: rgba(255,255,255,0.6); }
+    .services .section-lede { color: rgba(255,255,255,0.75); }
     .services-bg {
       position: absolute; inset: 0;
       background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, transparent 50%, rgba(107,163,190,0.05) 100%);
@@ -874,6 +898,8 @@
 
 <body>
 
+  <a href="#hero" class="skip-link">Skip to main content</a>
+
   <!-- ===== NAVIGATION ===== -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
@@ -892,7 +918,7 @@
         <a href="#contact" class="nav-link">Contact</a>
         <a href="#services" class="nav-cta">Visit Us Sunday</a>
       </div>
-      <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
         &#9776;
       </button>
     </div>
@@ -1238,7 +1264,7 @@
 
         <div class="contact-map">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3472.5!2d-98.252!3d29.884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s10215+FM+2673+Canyon+Lake+TX+78133!5e0!3m2!1sen!2sus!4v1"
+            src="https://www.google.com/maps?q=10215+FM+2673+Canyon+Lake+TX+78133&output=embed"
             width="100%"
             height="100%"
             style="border:0; min-height: 360px;"
