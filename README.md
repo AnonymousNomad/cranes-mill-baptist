@@ -2,7 +2,7 @@
 
 > Faith on the Lake. A single-page landing site for Cranes Mill Baptist Church, Canyon Lake, TX.
 
-Live at: https://cranemillbaptistchurch.github.io/
+Live at: https://anonymousnomad.github.io/cranes-mill-baptist/
 
 A beautiful, responsive, accessible landing page for Cranes Mill Baptist Church — a Bible-believing congregation on the shores of Canyon Lake, Texas. This is a **design showcase / demo** for the church to review.
 
