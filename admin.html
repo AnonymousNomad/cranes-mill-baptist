@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Church content workspace</title>
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/components.css" />
+    <style>
+      body { min-height: 100vh; padding: 3rem 0; }
+      .admin-shell { width: min(900px, calc(100% - 2rem)); margin: 0 auto; }
+      .admin-header { display: flex; justify-content: space-between; gap: 1rem; align-items: end; margin-bottom: 2rem; }
+      .admin-header h1 { max-width: 10ch; margin-top: 0.5rem; }
+      .admin-header a { color: var(--lake); font-weight: 700; }
+      .admin-card { margin-top: 1rem; padding: clamp(1.3rem, 4vw, 2.5rem); border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--paper); box-shadow: var(--shadow); }
+      .admin-card h2 { font-size: 2.2rem; }
+      .admin-form { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; margin-top: 1.5rem; }
+      .admin-form label { display: grid; gap: 0.35rem; color: var(--ink-soft); font-size: 0.8rem; font-weight: 700; }
+      .admin-form label.full, .admin-form button, .admin-status { grid-column: span 2; }
+      .admin-form input, .admin-form textarea, .admin-form select { width: 100%; padding: 0.75rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--cream); }
+      .admin-status { min-height: 1.5rem; color: var(--lake); }
+      .admin-list { display: grid; gap: 0.75rem; margin-top: 1rem; }
+      .admin-list article { padding: 1rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--cream); }
+      .admin-list strong, .admin-list small { display: block; }
+      .admin-list small { margin-top: 0.2rem; color: var(--ink-soft); }
+      .admin-list p { margin-top: 0.65rem; white-space: pre-wrap; }
+      @media (max-width: 600px) { .admin-header { display: block; } .admin-header a { display: block; margin-top: 1rem; } .admin-form { grid-template-columns: 1fr; } .admin-form label.full, .admin-form button, .admin-status { grid-column: auto; } }
+    </style>
+  </head>
+  <body>
+    <main class="admin-shell">
+      <header class="admin-header"><div><p class="eyebrow eyebrow-dark">Private workspace</p><h1>Church content</h1></div><a href="/">View public site</a></header>
+      <section class="admin-card"><h2>Administrator access</h2><p>Enter the token configured by the church server. It is never stored in this page.</p><form class="admin-form" id="token-form"><label class="full" for="admin-token">Admin token<input id="admin-token" type="password" required autocomplete="off" /></label><button class="button button-dark" type="submit">Unlock publishing forms</button><p class="admin-status" id="token-status" role="status"></p></form></section>
+      <section class="admin-card" id="content-forms" hidden>
+        <h2>Site details</h2>
+        <form class="admin-form" id="site-form"><label>Address<input name="address" required maxlength="160" /></label><label>Phone<input name="phone" required maxlength="40" /></label><label>Email<input name="email" type="email" required maxlength="160" /></label><label>Worship time<input name="worship_time" required maxlength="120" /></label><label>Facebook URL<input name="facebook_url" type="url" maxlength="500" /></label><label>Instagram URL<input name="instagram_url" type="url" maxlength="500" /></label><label>YouTube URL<input name="youtube_url" type="url" maxlength="500" /></label><label class="full">Welcome heading<input name="welcome_heading" required maxlength="160" /></label><label class="full">Welcome text<textarea name="welcome_body" required maxlength="1000" rows="3"></textarea></label><label class="full">Giving text<textarea name="giving_body" required maxlength="1000" rows="3"></textarea></label><button class="button button-dark" type="submit">Save site details</button><p class="admin-status" id="site-status" role="status"></p></form>
+        <h2>Add a sermon</h2>
+        <form class="admin-form" id="sermon-form"><label>Title<input name="title" required maxlength="160" /></label><label>Speaker<input name="speaker" required maxlength="120" /></label><label>Published on<input name="published_on" type="date" required /></label><label>Scripture<input name="scripture" maxlength="120" /></label><label class="full">Summary<textarea name="summary" maxlength="1000" rows="3"></textarea></label><label>Video URL<input name="video_url" maxlength="500" /></label><label>Image URL<input name="image_url" maxlength="500" /></label><button class="button button-dark" type="submit">Save sermon</button><p class="admin-status" id="sermon-status" role="status"></p></form>
+        <h2 style="margin-top:3rem">Add an event</h2>
+        <form class="admin-form" id="event-form"><label>Title<input name="title" required maxlength="160" /></label><label>Date<input name="event_date" type="date" required /></label><label>Time<input name="event_time" maxlength="80" /></label><label>Location<input name="location" maxlength="160" /></label><label class="full">Description<textarea name="description" maxlength="1000" rows="3"></textarea></label><button class="button button-dark" type="submit">Save event</button><p class="admin-status" id="event-status" role="status"></p></form>
+        <h2 style="margin-top:3rem">Add a ministry</h2>
+        <form class="admin-form" id="ministry-form"><label>Title<input name="title" required maxlength="120" /></label><label>Button label<input name="action_label" maxlength="80" /></label><label class="full">Summary<textarea name="summary" required maxlength="600" rows="3"></textarea></label><label>Button view<select name="action_route"><option value="contact">Contact</option><option value="events">Events</option><option value="about">About</option><option value="sermons">Sermons</option><option value="give">Give</option></select></label><label>Image URL<input name="image_url" maxlength="500" /></label><label>Sort order<input name="sort_order" type="number" min="0" max="999" value="10" /></label><button class="button button-dark" type="submit">Save ministry</button><p class="admin-status" id="ministry-status" role="status"></p></form>
+        <h2 style="margin-top:3rem">Add site music</h2>
+        <p>Add a recording for the floating player. Use a full https link, or a local path like <code>/church/welcome-song.mp3</code> after placing the file in the church media folder.</p>
+        <form class="admin-form" id="music-form"><label>Title<input name="title" required maxlength="160" /></label><label>Artist / group<input name="artist" maxlength="120" /></label><label class="full">Audio URL<input name="audio_url" required maxlength="500" placeholder="/church/song.mp3 or https://..." /></label><label>Sort order<input name="sort_order" type="number" min="0" max="999" value="10" /></label><button class="button button-dark" type="submit">Save music track</button><p class="admin-status" id="music-status" role="status"></p></form>
+        <div id="music-list" class="admin-list"></div>
+        <h2 style="margin-top:3rem">Prayer requests</h2>
+        <div id="prayer-list" class="admin-list"><p class="admin-status">Loading requests…</p></div>
+      </section>
+    </main>
+    <script type="module" src="/scripts/admin.js"></script>
+  </body>
+</html>

@@ -1,39 +1,35 @@
-# AGENT_NOTES — Cranes Mill Baptist Church Landing Page
+# Cranes Mill Baptist Church build notes
 
-## CURRENT STATUS
+## Current state
 
-Cranes Mill Baptist Church landing page is **LIVE** at https://anonymousnomad.github.io/cranes-mill-baptist/ and **DONE** for demo review.
+The original one-file landing-page demo has been split into a responsive public site and a local SQLite-backed content service. The main route is a single-page experience with hash-based views for Home, About, Ministries, Sermons, Events, Give, and Contact. The events view contains the separate month calendar requested by Odinn.
 
-- Separate repo, separate directory (`E:\cranemillbaptist`). Portfolio (`anonymousnomad.github.io`) untouched.
-- Single-file static site: `index.html` (plain HTML5 + CSS custom properties + vanilla JS, no framework/build step).
-- Stack: deep navy + warm gold lakeside palette, glassmorphism, scroll-reveal, mobile-first, a11y-hardened.
-- Sections: Hero, About, Service Times, Ministries, Community, Contact (with Google Maps embed), Footer.
-- Verified: live HTTP 200, all sections render headless, zero JS errors.
-- Repo: `AnonymousNomad/cranes-mill-baptist` (renamed from `cranemillbaptistchurch.github.io` — misleading name fixed), MIT license, README, .gitignore.
+## Content boundaries
 
----
+- The `church/` directory is the supplied source-of-truth media folder.
+- Gallery images are discovered at runtime and served through `/api/gallery`.
+- Site settings, ministries, sermons, events, and prayer requests are durable SQLite records.
+- Public data is readable without credentials; content creation requires `CHURCH_ADMIN_TOKEN`.
+- The private workspace can update site settings and add ministries, sermons, and events; prayer requests remain read-only there.
+- Prayer requests are readable only through the token-protected content workspace.
+- Seed content is explicitly starter content and requires church confirmation.
+- The home layout is intentionally photo-led: hero slideshow, quick links, welcome panel, image-backed event cards, connection cards, then the light footer.
+- Footer social URLs are stored in `site_settings`; Facebook is the only verified active link until the church supplies Instagram and YouTube URLs.
+- Decorative crosses are CSS-only, pointer-safe, and motion-reduced when the visitor requests reduced motion.
+- The current visual pass uses near-white paper surfaces, pale-gold alternate surfaces, gold trim, and a deep-navy footer.
+- White theme accents are intentionally pale blue; navy remains reserved for contrast sections and the hero overlay.
+- The footer reverses to deep navy so the pale-blue text and gold social pills have clear contrast.
+- The gallery heading uses layered CSS banner plates with perspective, trim, depth shadows, and a lower dimensional edge.
+- The home events band uses the same banner language, with staggered card perspective that flattens on mobile.
+- The events band now uses a cinematic navy/gold treatment with decorative atmosphere, raised image cards, and CSS calendar medallions.
+- Hero, gallery, and events display headings use a deliberate CSS extrusion stack with bright faces, gold edge depth, perspective, and cast shadows so the typography presents as raised signage.
+- The global theme carries that navy, pale-blue, and gold cinematic treatment through light sections, inner views, cards, controls, and footer surfaces.
+- Desktop hero copy is intentionally left-weighted to match the supplied composition; mobile keeps the centered shell spacing.
+- The home hero defaults to the cinematic landscape in `assets/hero/` (carved CRANES MILL scene). Hero controls can still reveal church gallery photos as an overlay; returning to Scene restores the landscape.
+- Hero video looping was requested but blocked under zero-data-retention; Ken Burns CSS motion is the current living-scene substitute.
+- Site music tracks are SQLite-backed (`music_tracks`). Publish them from `/admin.html` with a local path like `/church/song.mp3` or `/assets/music/...`, or an https URL. The floating player stays hidden until at least one valid track exists, tries autoplay on load, and falls back to tap-to-play when the browser blocks sound.
+- Inner views (About, Ministries, Sermons, Events, Give, Contact) share the home cinematic language: atmospheric navy washes, gold banner labels, display-3d headings, and raised gold-edged cards/panels.
 
-## Running Log
+## Verification boundary
 
----
-## [2026-09-08 00:30] Actor: opencode
-**Type:** task
-**Status:** done
-**Summary:** Built and deployed Cranes Mill Baptist Church landing page as a separate repo.
-**Details:** Researched the church (Cranes Mill Baptist Church, 10215 FM 2673, Canyon Lake TX 78133, Pastor Tim Havin, phone 830-899-7936, email cmbccl@gvtc.com). Built beautiful single-page static site with hero/about/service-times/ministries/community/contact. Loaded github-repo-professional-setup + aide-responsive-a11y skills; applied skip-link, focus-visible rings, aria-controls, contrast fixes, reliable maps embed. Created repo, renamed to `cranes-mill-baptist`, enabled Pages on master. Verified live render headless with zero JS errors.
-**Files:** E:\cranemillbaptist\index.html (main), README.md, LICENSE, .gitignore
-**Next:** User shares link with the church; iterate on feedback.
----
-
-## [2026-09-08 00:05] Actor: human
-**Type:** note
-**Status:** done
-**Summary:** Verified project plan + choices.
-**Details:** User confirmed: separate GitHub repo, no existing branding (my design call), polished demo for church review. Emphasized: DO NOT override the portfolio page.
----
-
-## [2026-09-08 00:00] Actor: human
-**Type:** task
-**Status:** done
-**Summary:** New paid job — build a landing page demo for "cranes mills baptist church" in Canyon Lake, TX.
-**Details:** Research the church, design a beautiful captivating landing page as a demo to show them. Host on GitHub, separate repo (never override the existing portfolio).
+Local structural checks and the standard-library test suite are the evidence in this checkout. No hosted deployment, production database, administrator credential, media-rights review, or church acceptance test has been performed. Do not describe this module as live, released, or complete until Odinn signs off.

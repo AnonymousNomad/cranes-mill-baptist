@@ -16,3 +16,17 @@ Thumbs.db
 node_modules/
 dist/
 build/
+.site-git/
+data/*.sqlite3
+data/*.db
+__pycache__/
+*.pyc
+.coverage
+.pytest_cache/
+
+# Oversized local media (GitHub 100MB hard limit)
+church/20260913_112818.mp4
+church/20260913_113101.mp4
+
+# Duplicate of assets/music/in-gods-grace.mp3
+/in gods grace.mp3

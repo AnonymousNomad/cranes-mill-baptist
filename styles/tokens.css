@@ -1,0 +1,72 @@
+:root {
+  --ink: #d9eff2;
+  --ink-soft: #9bb8bf;
+  --navy: #0b2535;
+  --navy-deep: #06151f;
+  --lake: #49a5b4;
+  --lake-light: #7fd0d2;
+  --cream: #0b202d;
+  --paper: #123443;
+  --line: #c9972d;
+  --gold: #e0ae3f;
+  --gold-pale: #f4d88f;
+  --white: #e5f4f4;
+  --display: Georgia, 'Times New Roman', serif;
+  --body: 'Avenir Next', 'Segoe UI', Arial, sans-serif;
+  --shell: 1180px;
+  --radius-sm: 0.35rem;
+  --radius-md: 0.8rem;
+  --radius-lg: 1.4rem;
+  --shadow: 0 1.25rem 3.5rem rgba(7, 26, 38, 0.13);
+  --ease: 220ms ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); background: var(--cream); font: 1rem/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+body.menu-open { overflow: hidden; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+h1, h2, h3, p, figure, blockquote { margin: 0; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.08; }
+h1 { font-size: clamp(2.8rem, 6vw, 5.8rem); letter-spacing: -0.045em; }
+h2 { font-size: clamp(2rem, 4vw, 3.7rem); letter-spacing: -0.035em; }
+h3 { font-size: 1.55rem; }
+p { max-width: 65ch; }
+
+.shell { width: min(var(--shell), calc(100% - 3rem)); margin: 0 auto; }
+.section-pad { padding: clamp(4.5rem, 9vw, 8rem) 0; }
+.visually-hidden, .visually-hidden * { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; display: inline !important; transform: none !important; text-shadow: none !important; filter: none !important; }
+.eyebrow { color: var(--gold); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.17em; line-height: 1.25; text-transform: uppercase; }
+.eyebrow-dark { color: var(--lake); }
+.skip-link { position: fixed; z-index: 50; top: -5rem; left: 1rem; padding: 0.75rem 1rem; color: var(--navy); background: var(--gold); border-radius: 0 0 var(--radius-sm) var(--radius-sm); font-weight: 700; transition: top var(--ease); }
+.skip-link:focus { top: 0; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+
+.button { display: inline-flex; align-items: center; justify-content: center; min-height: 3rem; padding: 0.75rem 1.35rem; border: 1px solid var(--gold); border-radius: 999px; font-size: 0.86rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; transition: transform var(--ease), background var(--ease), color var(--ease), border-color var(--ease), box-shadow var(--ease); }
+.button:hover { transform: translateY(-2px); }
+.button-primary { color: var(--navy); background: var(--gold); }
+.button-primary:hover { background: var(--gold-pale); }
+.button-ghost { color: var(--white); border-color: var(--gold-pale); }
+.button-ghost:hover { color: var(--navy); background: var(--white); }
+.button-dark { color: var(--white); background: var(--navy); box-shadow: inset 0 0 0 1px rgba(241, 217, 154, 0.2); }
+.button-dark:hover { background: var(--lake); }
+.button-light { color: var(--navy); background: #fffdf9; }
+.button-light:hover { color: var(--navy); background: var(--gold-pale); }
+.text-link { display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 1.25rem; color: var(--lake); font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.text-link span { font-size: 1.15rem; transition: transform var(--ease); }
+.text-link:hover span { transform: translateX(0.25rem); }
+
+@media (max-width: 700px) {
+  .shell { width: min(var(--shell), calc(100% - 2rem)); }
+  h1 { font-size: clamp(2.7rem, 15vw, 4.4rem); }
+  h2 { font-size: clamp(2rem, 11vw, 3.1rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+  .hero-landscape { transform: none !important; animation: none !important; }
+  .hero-mist, .hero-scroll-hint span { animation: none !important; }
+}

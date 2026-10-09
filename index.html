@@ -1,1346 +1,189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cranes Mill Baptist Church — Faith on the Lake</title>
-  <meta name="description" content="Cranes Mill Baptist Church — a Bible-believing congregation on the shores of Canyon Lake, TX. Join us Sundays at 11:00 AM for worship." />
-  <meta property="og:title" content="Cranes Mill Baptist Church — Faith on the Lake" />
-  <meta property="og:description" content="A Bible-believing congregation on the shores of Canyon Lake, TX. Join us Sundays at 11:00 AM." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#1B2A4A" />
-
-  <style>
-    /* ============================================================
-       DESIGN TOKENS
-       ============================================================ */
-    :root {
-      /* Palette */
-      --navy:         #1B2A4A;
-      --navy-deep:    #0F1B33;
-      --navy-light:   #253A5E;
-      --gold:         #C9A84C;
-      --gold-light:   #E0C878;
-      --gold-dim:     rgba(201, 168, 76, 0.15);
-      --sky:          #6BA3BE;
-      --sky-light:    #8FC1D6;
-      --cream:        #FBF8F1;
-      --cream-dark:   #F0EBE0;
-      --white:        #FFFFFF;
-      --charcoal:     #2D2D2D;
-      --gray:         #6B7280;
-      --gray-light:   #9CA3AF;
-      --gray-border:  #E5E7EB;
-
-      /* Typography */
-      --font-heading: Georgia, 'Times New Roman', serif;
-      --font-body:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      --font-mono:    'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
-
-      /* Spacing */
-      --space-xs:  0.25rem;
-      --space-sm:  0.5rem;
-      --space-md:  1rem;
-      --space-lg:  1.5rem;
-      --space-xl:  2rem;
-      --space-2xl: 3rem;
-      --space-3xl: 4rem;
-      --space-4xl: 6rem;
-
-      /* Radius */
-      --radius-sm:   6px;
-      --radius-md:   12px;
-      --radius-lg:   20px;
-      --radius-xl:   28px;
-      --radius-pill: 999px;
-
-      /* Shadows */
-      --shadow-sm:  0 1px 3px rgba(0,0,0,0.08);
-      --shadow-md:  0 4px 16px rgba(0,0,0,0.1);
-      --shadow-lg:  0 8px 32px rgba(0,0,0,0.12);
-      --shadow-xl:  0 16px 48px rgba(0,0,0,0.15);
-      --shadow-gold: 0 4px 24px rgba(201, 168, 76, 0.25);
-
-      /* Transitions */
-      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-      --duration-fast: 180ms;
-      --duration-normal: 320ms;
-      --duration-slow: 500ms;
-    }
-
-    /* ============================================================
-       RESET
-       ============================================================ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body {
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--charcoal);
-      background: var(--cream);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-    }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    ul, ol { list-style: none; }
-    h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); line-height: 1.2; }
-
-    /* ============================================================
-       UTILITIES
-       ============================================================ */
-    .container {
-      width: 100%;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 var(--space-lg);
-    }
-    .sr-only {
-      position: absolute; width: 1px; height: 1px;
-      padding: 0; margin: -1px; overflow: hidden;
-      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-    }
-    .text-center { text-align: center; }
-    .text-gold { color: var(--gold); }
-    .text-navy { color: var(--navy); }
-    .text-white { color: var(--white); }
-
-    /* ============================================================
-       BUTTONS
-       ============================================================ */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-sm);
-      padding: 0.875rem 1.75rem;
-      border-radius: var(--radius-pill);
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      transition: all var(--duration-normal) var(--ease-out);
-      white-space: nowrap;
-    }
-    .btn-primary {
-      background: var(--gold);
-      color: var(--navy-deep);
-      box-shadow: var(--shadow-gold);
-    }
-    .btn-primary:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(201, 168, 76, 0.35);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,0.3);
-    }
-    .btn-outline:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      background: rgba(201, 168, 76, 0.08);
-    }
-    .btn-navy {
-      background: var(--navy);
-      color: var(--white);
-    }
-    .btn-navy:hover {
-      background: var(--navy-light);
-      transform: translateY(-2px);
-    }
-    .btn-arrow { transition: transform var(--duration-fast) var(--ease-out); }
-    .btn:hover .btn-arrow { transform: translateX(4px); }
-
-    /* ============================================================
-       SCROLL REVEAL
-       ============================================================ */
-    [data-reveal] {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity var(--duration-slow) var(--ease-out),
-                  transform var(--duration-slow) var(--ease-out);
-    }
-    [data-reveal].is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    @media (prefers-reduced-motion: reduce) {
-      [data-reveal] { opacity: 1; transform: none; transition: none; }
-    }
-
-    .skip-link {
-      position: absolute;
-      top: -100px;
-      left: 0;
-      padding: 0.75rem 1.5rem;
-      background: var(--gold);
-      color: var(--navy-deep);
-      font-weight: 600;
-      border-radius: 0 0 var(--radius-md) 0;
-      z-index: 2000;
-      transition: top var(--duration-fast) var(--ease-out);
-    }
-    .skip-link:focus {
-      top: 0;
-      box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.4);
-    }
-    a:focus-visible,
-    button:focus-visible,
-    .btn:focus-visible {
-      outline: 3px solid var(--gold);
-      outline-offset: 2px;
-      border-radius: var(--radius-sm);
-    }
-
-    /* ============================================================
-       NAVIGATION
-       ============================================================ */
-    .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      background: rgba(27, 42, 74, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      transition: background var(--duration-normal) var(--ease-out);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-    }
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-    }
-    .nav-logo {
-      width: 40px; height: 40px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--navy-deep);
-    }
-    .nav-name {
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: 0.01em;
-    }
-    .nav-name small {
-      display: block;
-      font-size: 0.65rem;
-      font-weight: 400;
-      color: var(--gray-light);
-      font-family: var(--font-body);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: var(--space-xl);
-    }
-    .nav-link {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.7);
-      transition: color var(--duration-fast) var(--ease-out);
-      letter-spacing: 0.02em;
-    }
-    .nav-link:hover { color: var(--gold); }
-    .nav-cta {
-      padding: 0.5rem 1.25rem;
-      background: var(--gold);
-      color: var(--navy-deep);
-      border-radius: var(--radius-pill);
-      font-size: 0.875rem;
-      font-weight: 600;
-      transition: all var(--duration-fast) var(--ease-out);
-    }
-    .nav-cta:hover {
-      background: var(--gold-light);
-      transform: translateY(-1px);
-    }
-    .nav-mobile-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--white);
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: var(--space-sm);
-    }
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-mobile-toggle { display: block; }
-      .nav-links.is-open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 72px; left: 0; right: 0;
-        background: rgba(27, 42, 74, 0.98);
-        padding: var(--space-lg);
-        gap: var(--space-md);
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-      }
-    }
-
-    /* ============================================================
-       HERO
-       ============================================================ */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      background: var(--navy-deep);
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-    /* Simulated lake/sky gradient */
-    .hero-sky {
-      position: absolute; inset: 0;
-      background: linear-gradient(
-        175deg,
-        #0B1929 0%,
-        #132244 20%,
-        #1B3A5C 40%,
-        #2A5F7A 55%,
-        #3D8BA0 65%,
-        #6BA3BE 75%,
-        #8FC1D6 82%,
-        #C9A84C 90%,
-        #E0C878 95%,
-        #FBF8F1 100%
-      );
-      opacity: 0.6;
-    }
-    .hero-glow {
-      position: absolute;
-      width: 60vw; height: 60vw;
-      max-width: 700px; max-height: 700px;
-      border-radius: 50%;
-      filter: blur(120px);
-      mix-blend-mode: screen;
-    }
-    .hero-glow-gold {
-      bottom: 10%; right: -5%;
-      background: var(--gold);
-      opacity: 0.12;
-    }
-    .hero-glow-sky {
-      top: -10%; left: -10%;
-      background: var(--sky);
-      opacity: 0.08;
-    }
-    /* Subtle cross watermark */
-    .hero-cross {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 28vw;
-      font-family: var(--font-heading);
-      color: rgba(255,255,255,0.015);
-      pointer-events: none;
-      user-select: none;
-      line-height: 1;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      padding-top: 120px;
-      padding-bottom: var(--space-4xl);
-    }
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-sm);
-      padding: 0.5rem 1rem;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius-pill);
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: var(--space-xl);
-    }
-    .hero-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 10px rgba(201, 168, 76, 0.5);
-      animation: pulse 2.5s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-    .hero-title {
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.05;
-      margin-bottom: var(--space-lg);
-      max-width: 14ch;
-    }
-    .hero-title em {
-      font-style: normal;
-      color: var(--gold);
-      display: block;
-    }
-    .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: rgba(255,255,255,0.8);
-      max-width: 50ch;
-      line-height: 1.7;
-      margin-bottom: var(--space-2xl);
-    }
-    .hero-ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-md);
-      margin-bottom: var(--space-3xl);
-    }
-    .hero-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2xl);
-      padding: var(--space-lg) var(--space-xl);
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius-lg);
-      max-width: max-content;
-    }
-    .hero-info-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .hero-info-label {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.65);
-      font-weight: 500;
-    }
-    .hero-info-value {
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--white);
-    }
-    .hero-info-divider {
-      width: 1px;
-      background: rgba(255,255,255,0.1);
-      align-self: stretch;
-    }
-    @media (max-width: 600px) {
-      .hero-info { flex-direction: column; gap: var(--space-md); }
-      .hero-info-divider { width: 100%; height: 1px; }
-    }
-
-    /* ============================================================
-       SECTION SHARED
-       ============================================================ */
-    .section {
-      padding: var(--space-4xl) 0;
-    }
-    .section-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: var(--space-md);
-    }
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: var(--space-md);
-      line-height: 1.15;
-    }
-    .section-lede {
-      font-size: 1.1rem;
-      color: var(--gray);
-      max-width: 55ch;
-      line-height: 1.7;
-      margin-bottom: var(--space-2xl);
-    }
-
-    /* ============================================================
-       ABOUT
-       ============================================================ */
-    .about { background: var(--cream); }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-2xl);
-      align-items: center;
-    }
-    .about-text p {
-      font-size: 1.05rem;
-      color: var(--gray);
-      line-height: 1.8;
-      margin-bottom: var(--space-lg);
-    }
-    .about-text p:last-child { margin-bottom: 0; }
-    .about-text strong { color: var(--navy); font-weight: 600; }
-    .about-card {
-      padding: var(--space-2xl);
-      background: var(--white);
-      border: 1px solid var(--gray-border);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-md);
-    }
-    .about-scripture {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      font-style: italic;
-      color: var(--navy);
-      line-height: 1.5;
-      margin-bottom: var(--space-md);
-      position: relative;
-      padding-left: var(--space-lg);
-      border-left: 3px solid var(--gold);
-    }
-    .about-scripture-ref {
-      display: block;
-      font-size: 0.85rem;
-      font-style: normal;
-      font-family: var(--font-body);
-      color: var(--gold);
-      font-weight: 600;
-      margin-top: var(--space-sm);
-    }
-    .about-values {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-      margin-top: var(--space-xl);
-    }
-    .about-value {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-md);
-    }
-    .about-value-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
-      margin-top: 6px;
-    }
-    .about-value-text {
-      font-size: 0.95rem;
-      color: var(--charcoal);
-      line-height: 1.6;
-    }
-    @media (max-width: 768px) {
-      .about-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ============================================================
-       SERVICE TIMES
-       ============================================================ */
-    .services {
-      background: var(--navy-deep);
-      color: var(--white);
-      position: relative;
-      overflow: hidden;
-    }
-    .services .section-eyebrow { color: var(--gold-light); }
-    .services .section-title { color: var(--white); }
-    .services .section-lede { color: rgba(255,255,255,0.75); }
-    .services-bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(201,168,76,0.05) 0%, transparent 50%, rgba(107,163,190,0.05) 100%);
-      pointer-events: none;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-xl);
-      position: relative;
-      z-index: 1;
-    }
-    .service-card {
-      padding: var(--space-2xl);
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius-xl);
-      transition: all var(--duration-normal) var(--ease-out);
-    }
-    .service-card:hover {
-      border-color: var(--gold);
-      background: rgba(201, 168, 76, 0.05);
-      transform: translateY(-4px);
-    }
-    .service-day {
-      font-family: var(--font-heading);
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--gold);
-      margin-bottom: var(--space-lg);
-      font-weight: 600;
-    }
-    .service-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: var(--space-md) 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .service-item:last-child { border-bottom: none; }
-    .service-name {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--white);
-    }
-    .service-time {
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      color: var(--gold-light);
-      font-weight: 500;
-    }
-    .services-map {
-      margin-top: var(--space-2xl);
-      padding: var(--space-lg);
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius-lg);
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    .services-map p {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.95rem;
-      margin-bottom: var(--space-md);
-    }
-    .services-map a {
-      color: var(--gold);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-    .services-map a:hover { color: var(--gold-light); }
-    @media (max-width: 768px) {
-      .services-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ============================================================
-       MINISTRIES
-       ============================================================ */
-    .ministries { background: var(--cream); }
-    .ministries-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-xl);
-    }
-    .ministry-card {
-      padding: var(--space-2xl);
-      background: var(--white);
-      border: 1px solid var(--gray-border);
-      border-radius: var(--radius-xl);
-      transition: all var(--duration-normal) var(--ease-out);
-    }
-    .ministry-card:hover {
-      border-color: var(--gold);
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
-    }
-    .ministry-icon {
-      width: 56px; height: 56px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      margin-bottom: var(--space-lg);
-    }
-    .ministry-icon-blue { background: rgba(107, 163, 190, 0.12); }
-    .ministry-icon-gold { background: var(--gold-dim); }
-    .ministry-icon-navy { background: rgba(27, 42, 74, 0.08); }
-    .ministry-name {
-      font-family: var(--font-heading);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: var(--space-sm);
-    }
-    .ministry-desc {
-      font-size: 0.95rem;
-      color: var(--gray);
-      line-height: 1.7;
-    }
-    .ministry-time {
-      display: inline-block;
-      margin-top: var(--space-md);
-      padding: 0.3rem 0.75rem;
-      background: var(--cream);
-      border-radius: var(--radius-pill);
-      font-size: 0.8rem;
-      font-family: var(--font-mono);
-      color: var(--navy);
-      font-weight: 500;
-    }
-    @media (max-width: 900px) {
-      .ministries-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ============================================================
-       COMMUNITY
-       ============================================================ */
-    .community {
-      background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
-    }
-    .community-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-xl);
-    }
-    .community-card {
-      padding: var(--space-2xl);
-      background: var(--white);
-      border: 1px solid var(--gray-border);
-      border-radius: var(--radius-xl);
-      text-align: center;
-      transition: all var(--duration-normal) var(--ease-out);
-    }
-    .community-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-    .community-num {
-      font-family: var(--font-heading);
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: var(--space-sm);
-    }
-    .community-label {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: var(--space-sm);
-    }
-    .community-desc {
-      font-size: 0.9rem;
-      color: var(--gray);
-      line-height: 1.6;
-    }
-    .community-quote {
-      margin-top: var(--space-3xl);
-      padding: var(--space-2xl);
-      background: var(--navy-deep);
-      border-radius: var(--radius-xl);
-      text-align: center;
-    }
-    .community-quote blockquote {
-      font-family: var(--font-heading);
-      font-size: clamp(1.1rem, 2vw, 1.4rem);
-      font-style: italic;
-      color: var(--white);
-      line-height: 1.6;
-      max-width: 60ch;
-      margin: 0 auto var(--space-md);
-    }
-    .community-quote cite {
-      font-style: normal;
-      font-size: 0.85rem;
-      color: var(--gold);
-      font-weight: 500;
-    }
-    @media (max-width: 900px) {
-      .community-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ============================================================
-       CONTACT
-       ============================================================ */
-    .contact { background: var(--white); }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-2xl);
-    }
-    .contact-info { display: flex; flex-direction: column; gap: var(--space-xl); }
-    .contact-block-title {
-      font-family: var(--font-heading);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: var(--space-md);
-    }
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-md);
-      margin-bottom: var(--space-md);
-    }
-    .contact-icon {
-      width: 40px; height: 40px;
-      border-radius: var(--radius-sm);
-      background: var(--gold-dim);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-    .contact-detail {
-      font-size: 0.95rem;
-      color: var(--charcoal);
-      line-height: 1.5;
-    }
-    .contact-detail a {
-      color: var(--navy);
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-    .contact-detail a:hover { color: var(--gold); }
-    .contact-map {
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      border: 1px solid var(--gray-border);
-      box-shadow: var(--shadow-md);
-      min-height: 360px;
-    }
-    .contact-map iframe {
-      width: 100%;
-      height: 100%;
-      min-height: 360px;
-      border: 0;
-    }
-    @media (max-width: 768px) {
-      .contact-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ============================================================
-       FOOTER
-       ============================================================ */
-    .footer {
-      background: var(--navy-deep);
-      color: rgba(255,255,255,0.5);
-      padding: var(--space-2xl) 0;
-    }
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: var(--space-md);
-    }
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-    }
-    .footer-logo {
-      width: 32px; height: 32px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--navy-deep);
-    }
-    .footer-name {
-      font-family: var(--font-heading);
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
-    }
-    .footer-links {
-      display: flex;
-      gap: var(--space-lg);
-    }
-    .footer-link {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.4);
-      transition: color var(--duration-fast) var(--ease-out);
-    }
-    .footer-link:hover { color: var(--gold); }
-    .footer-copy {
-      width: 100%;
-      text-align: center;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.25);
-      margin-top: var(--space-lg);
-      padding-top: var(--space-lg);
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-  </style>
-</head>
-
-<body>
-
-  <a href="#hero" class="skip-link">Skip to main content</a>
-
-  <!-- ===== NAVIGATION ===== -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <div class="container nav-inner">
-      <a href="#hero" class="nav-brand">
-        <div class="nav-logo" aria-hidden="true">C</div>
-        <div class="nav-name">
-          Cranes Mill
-          <small>Baptist Church</small>
-        </div>
-      </a>
-      <div class="nav-links" id="nav-links">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#ministries" class="nav-link">Ministries</a>
-        <a href="#community" class="nav-link">Community</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <a href="#services" class="nav-cta">Visit Us Sunday</a>
-      </div>
-      <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
-        &#9776;
-      </button>
-    </div>
-  </nav>
-
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="hero">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="hero-sky"></div>
-      <div class="hero-glow hero-glow-gold"></div>
-      <div class="hero-glow hero-glow-sky"></div>
-      <div class="hero-cross">✦</div>
-    </div>
-
-    <div class="container hero-content">
-      <div class="hero-eyebrow" data-reveal>
-        <span class="hero-dot" aria-hidden="true"></span>
-        <span>Canyon Lake, Texas</span>
-      </div>
-
-      <h1 class="hero-title" data-reveal>
-        Faith on<em>the Lake.</em>
-      </h1>
-
-      <p class="hero-sub" data-reveal>
-        A Bible-believing congregation gathered on the shores of Canyon Lake.
-        Come as you are. Worship with us. Be part of our story.
-      </p>
-
-      <div class="hero-ctas" data-reveal>
-        <a class="btn btn-primary" href="#services">
-          <span>Plan Your Visit</span>
-          <span class="btn-arrow" aria-hidden="true">→</span>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b2535" />
+    <meta name="description" content="Cranes Mill Baptist Church in Canyon Lake, Texas. A family, a place to belong, and a greater purpose." />
+    <title>Cranes Mill Baptist Church | Canyon Lake, Texas</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b2535'/%3E%3Cpath d='M31 10h4v44h-4zM20 22h26v4H20z' fill='%23e1b95a'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="/styles/tokens.css?v=20261008f" />
+    <link rel="stylesheet" href="/styles/layout.css?v=20261008f" />
+    <link rel="stylesheet" href="/styles/components.css?v=20261008f" />
+    <link rel="stylesheet" href="/styles/views.css?v=20261008f" />
+  </head>
+  <body>
+    <div class="floating-crosses" aria-hidden="true"><span class="floating-cross floating-cross-one"></span><span class="floating-cross floating-cross-two"></span><span class="floating-cross floating-cross-three"></span></div>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="shell header-inner">
+        <a class="brand" href="#home" data-route="home" aria-label="Cranes Mill Baptist Church home">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          <span class="brand-copy"><strong>Cranes Mill</strong><small>Baptist Church</small></span>
         </a>
-        <a class="btn btn-outline" href="#about">
-          <span>Learn More</span>
-        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+          <button class="nav-map-btn" type="button" id="open-map" aria-label="Open church location map">
+            <img src="/assets/icons/maps.png" width="108" height="108" alt="" />
+          </button>
+          <a href="#home" data-route="home">Home</a>
+          <a href="#about" data-route="about">About</a>
+          <a href="#ministries" data-route="ministries">Ministries</a>
+          <a href="#sermons" data-route="sermons">Sermons</a>
+          <a href="#events" data-route="events">Events</a>
+          <a href="#give" data-route="give">Give</a>
+          <a class="nav-cta" href="#contact" data-route="contact">I'm new here</a>
+        </nav>
       </div>
+    </header>
 
-      <div class="hero-info" data-reveal>
-        <div class="hero-info-item">
-          <span class="hero-info-label">Sunday Worship</span>
-          <span class="hero-info-value">11:00 AM</span>
-        </div>
-        <div class="hero-info-divider" aria-hidden="true"></div>
-        <div class="hero-info-item">
-          <span class="hero-info-label">Sunday School</span>
-          <span class="hero-info-value">9:45 AM</span>
-        </div>
-        <div class="hero-info-divider" aria-hidden="true"></div>
-        <div class="hero-info-item">
-          <span class="hero-info-label">Location</span>
-          <span class="hero-info-value">FM 2673</span>
-        </div>
-        <div class="hero-info-divider" aria-hidden="true"></div>
-        <div class="hero-info-item">
-          <span class="hero-info-label">Phone</span>
-          <span class="hero-info-value">(830) 899-7936</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section class="section about" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-text" data-reveal>
-          <div class="section-eyebrow">// who we are</div>
-          <h2 class="section-title">A Church Rooted in<br/>Scripture &amp; Community</h2>
-          <p>
-            Cranes Mill Baptist Church is a <strong>Bible-believing congregation</strong> serving God
-            on the southwestern shores of Canyon Lake. We are 15 minutes from New Braunfels
-            and 25 minutes from San Antonio — close enough to the city, quiet enough to hear God.
-          </p>
-          <p>
-            For decades, we've been a place where families grow, faith deepens, and community
-            matters. We are not a perfect church — we are a <strong>faithful one</strong>.
-            We gather to worship, to learn, and to serve one another and our neighbors.
-          </p>
-          <p>
-            Whether you've been in church your whole life or have never set foot in one,
-            <strong>you are welcome here.</strong>
-          </p>
-        </div>
-
-        <div class="about-card" data-reveal>
-          <div class="about-scripture">
-            "Therefore go and make disciples of all nations, baptizing them in the name
-            of the Father and of the Son and of the Holy Spirit."
-            <span class="about-scripture-ref">— Matthew 28:19</span>
+    <main id="main-content">
+      <section id="home-view" class="view" data-view="home">
+        <section class="hero hero-cinematic" aria-labelledby="hero-title">
+          <div class="hero-stage" aria-hidden="true">
+            <picture class="hero-landscape-frame">
+              <source media="(max-width: 700px)" srcset="/assets/hero/sunrise-hero-mobile.jpg" />
+              <img class="hero-landscape" src="/assets/hero/sunrise-hero.jpg" alt="" width="1768" height="889" fetchpriority="high" />
+            </picture>
+            <div class="hero-slideshow" id="hero-slideshow"></div>
+            <div class="hero-mist"></div>
+            <div class="hero-shade"></div>
+            <div class="hero-glow"></div>
           </div>
-          <div class="about-values">
-            <div class="about-value">
-              <div class="about-value-dot" aria-hidden="true"></div>
-              <div class="about-value-text"><strong>Scripture-centered</strong> — Every sermon, every study, rooted in the Bible.</div>
-            </div>
-            <div class="about-value">
-              <div class="about-value-dot" aria-hidden="true"></div>
-              <div class="about-value-text"><strong>Family-focused</strong> — Programs for every age, from children to seniors.</div>
-            </div>
-            <div class="about-value">
-              <div class="about-value-dot" aria-hidden="true"></div>
-              <div class="about-value-text"><strong>Community-driven</strong> — We serve Canyon Lake through outreach and partnership.</div>
+          <div class="shell hero-content">
+            <p class="hero-location"><span aria-hidden="true">●</span> Canyon Lake, TX</p>
+            <h1 class="visually-hidden" id="hero-title">Cranes Mill Baptist Church</h1>
+            <div class="hero-hotspots" aria-label="Hero actions">
+              <a href="#contact" data-route="contact" aria-label="I'm New"></a>
+              <a href="#contact" data-route="contact" aria-label="Plan a Visit"></a>
+              <a href="#sermons" data-route="sermons" aria-label="Watch Live"></a>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        </section>
 
-  <!-- ===== SERVICE TIMES ===== -->
-  <section class="section services" id="services">
-    <div class="services-bg" aria-hidden="true"></div>
-    <div class="container">
-      <div class="section-eyebrow" data-reveal>// join us</div>
-      <h2 class="section-title" data-reveal>When We Gather</h2>
-      <p class="section-lede" data-reveal>
-        Come for a service, stay for the fellowship. Dress is casual. Families are welcome.
-        There's no pressure — just come and worship with us.
-      </p>
-
-      <div class="services-grid" data-reveal>
-        <div class="service-card">
-          <div class="service-day">Sunday Mornings</div>
-          <div class="service-item">
-            <span class="service-name">Gathering &amp; Fellowship</span>
-            <span class="service-time">9:00 AM</span>
+        <section class="quick-links" aria-label="Church shortcuts">
+          <div class="shell quick-grid">
+            <a href="#contact" data-route="contact"><span class="quick-icon">+</span><strong>I'm New</strong><small>Find out what to expect</small></a>
+            <a href="#contact" data-route="contact"><span class="quick-icon">□</span><strong>Plan a Visit</strong><small>Join us this Sunday</small></a>
+            <a href="#sermons" data-route="sermons"><span class="quick-icon">▤</span><strong>Watch Live</strong><small>Watch and listen</small></a>
+            <a href="#ministries" data-route="ministries"><span class="quick-icon">♡</span><strong>Ministries</strong><small>All ages and stages</small></a>
+            <a href="#give" data-route="give"><span class="quick-icon">⌁</span><strong>Give</strong><small>Make an eternal impact</small></a>
           </div>
-          <div class="service-item">
-            <span class="service-name">Sunday School</span>
-            <span class="service-time">9:45 AM</span>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Worship Service</span>
-            <span class="service-time">11:00 AM</span>
-          </div>
-        </div>
+        </section>
 
-        <div class="service-card">
-          <div class="service-day">Wednesday Evenings</div>
-          <div class="service-item">
-            <span class="service-name">Fellowship Meal</span>
-            <span class="service-time">5:00 PM</span>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Youth &amp; Children</span>
-            <span class="service-time">6:00 PM</span>
-          </div>
-          <div class="service-item">
-            <span class="service-name">Adult Bible Study</span>
-            <span class="service-time">6:15 PM</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="services-map" data-reveal>
-        <p>
-          📍 <strong>10215 FM 2673, Canyon Lake, TX 78133</strong>
-          &nbsp;·&nbsp;
-          <a href="https://www.google.com/maps/search/10215+FM+2673+Canyon+Lake+TX+78133" target="_blank" rel="noopener noreferrer">
-            Get Directions
-          </a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== MINISTRIES ===== -->
-  <section class="section ministries" id="ministries">
-    <div class="container">
-      <div class="section-eyebrow" data-reveal>// ministries</div>
-      <h2 class="section-title" data-reveal>Growing Together in Faith</h2>
-      <p class="section-lede" data-reveal>
-        Every age and stage has a place here. Our ministries are designed to help you
-        grow in your relationship with Christ — at your own pace.
-      </p>
-
-      <div class="ministries-grid" data-reveal>
-        <div class="ministry-card">
-          <div class="ministry-icon ministry-icon-blue" aria-hidden="true">📖</div>
-          <h3 class="ministry-name">Sunday School</h3>
-          <p class="ministry-desc">
-            Age-appropriate Bible studies for every member of the family.
-            Dive deeper into God's Word in a small group setting.
-          </p>
-          <span class="ministry-time">Sundays · 9:45 AM</span>
-        </div>
-
-        <div class="ministry-card">
-          <div class="ministry-icon ministry-icon-gold" aria-hidden="true">🎵</div>
-          <h3 class="ministry-name">Worship</h3>
-          <p class="ministry-desc">
-            Traditional and contemporary hymns led by our worship team.
-            Scripture-centered preaching with an invitation to respond.
-          </p>
-          <span class="ministry-time">Sundays · 11:00 AM</span>
-        </div>
-
-        <div class="ministry-card">
-          <div class="ministry-icon ministry-icon-navy" aria-hidden="true">🤝</div>
-          <h3 class="ministry-name">Fellowship</h3>
-          <p class="ministry-desc">
-            Weekly Wednesday meals, quarterly community nights, and regular
-            gatherings to strengthen the bonds between us.
-          </p>
-          <span class="ministry-time">Wednesdays · 5:00 PM</span>
-        </div>
-
-        <div class="ministry-card">
-          <div class="ministry-icon ministry-icon-blue" aria-hidden="true">👦</div>
-          <h3 class="ministry-name">Youth Ministry</h3>
-          <p class="ministry-desc">
-            A safe and fun environment for students to explore faith,
-            build friendships, and grow in their walk with Christ.
-          </p>
-          <span class="ministry-time">Wednesdays · 6:00 PM</span>
-        </div>
-
-        <div class="ministry-card">
-          <div class="ministry-icon ministry-icon-gold" aria-hidden="true">🧒</div>
-          <h3 class="ministry-name">Children's Programs</h3>
-          <p class="ministry-desc">
-            Age-appropriate activities and Bible lessons that help
-            kids build a foundation of faith from an early age.
-          </p>
-          <span class="ministry-time">Sundays & Wednesdays</span>
-        </div>
-
-        <div class="ministry-card">
-          <div class="ministry-icon ministry-icon-navy" aria-hidden="true">👨‍👩‍👧</div>
-          <h3 class="ministry-name">Parents Night Out</h3>
-          <p class="ministry-desc">
-            A dedicated evening for parents to enjoy time together while
-            their children are cared for in a safe, fun environment.
-          </p>
-          <span class="ministry-time">1st Friday · 6–9 PM</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== COMMUNITY ===== -->
-  <section class="section community" id="community">
-    <div class="container">
-      <div class="section-eyebrow" data-reveal>// serving canyon lake</div>
-      <h2 class="section-title" data-reveal>More Than a Church —<br/>A Community Partner</h2>
-      <p class="section-lede" data-reveal>
-        We don't just gather on Sundays. We show up for Canyon Lake —
-        through service, partnership, and generosity.
-      </p>
-
-      <div class="community-grid" data-reveal>
-        <div class="community-card">
-          <div class="community-num">100+</div>
-          <div class="community-label">Meals Delivered</div>
-          <p class="community-desc">
-            Through our partnership with the CRRC, we prepare and deliver
-            meals to seniors and homebound neighbors in Canyon Lake.
-          </p>
-        </div>
-
-        <div class="community-card">
-          <div class="community-num">3</div>
-          <div class="community-label">Partner Organizations</div>
-          <p class="community-desc">
-            CRRC Meals on Wheels, Family Promise homeless shelter,
-            and One Day Academy — serving our community together.
-          </p>
-        </div>
-
-        <div class="community-card">
-          <div class="community-num">40+</div>
-          <div class="community-label">Years Serving</div>
-          <p class="community-desc">
-            A faithful presence on Canyon Lake for over four decades,
-            through every season and every need.
-          </p>
-        </div>
-      </div>
-
-      <div class="community-quote" data-reveal>
-        <blockquote>
-          "Whether coming for a day, a season, or having committed their lives to our church,
-          it is through the faithfulness of so many that we exist."
-        </blockquote>
-        <cite>— Cranes Mill Baptist Church</cite>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CONTACT ===== -->
-  <section class="section contact" id="contact">
-    <div class="container">
-      <div class="section-eyebrow" data-reveal>// get in touch</div>
-      <h2 class="section-title" data-reveal>We'd Love to Hear from You</h2>
-      <p class="section-lede" data-reveal>
-        Questions about our church? Want to visit for the first time?
-        Reach out — we're here to help.
-      </p>
-
-      <div class="contact-grid" data-reveal>
-        <div class="contact-info">
-          <div>
-            <h3 class="contact-block-title">📍 Visit Us</h3>
-            <div class="contact-item">
-              <div class="contact-icon" aria-hidden="true">🏠</div>
-              <div class="contact-detail">
-                10215 FM 2673<br/>
-                Canyon Lake, TX 78133
+        <section class="welcome section-pad">
+          <div class="shell split-panel">
+            <figure class="image-frame welcome-slideshow-frame">
+              <div class="welcome-slideshow" id="welcome-slideshow" aria-label="Church photo slideshow"></div>
+              <div class="welcome-slide-controls" aria-label="Welcome photo controls">
+                <button type="button" data-welcome-slide="previous" aria-label="Previous photo">Prev</button>
+                <span id="welcome-slide-status">1 / 1</span>
+                <button type="button" data-welcome-slide="next" aria-label="Next photo">Next</button>
               </div>
+            </figure>
+            <div class="welcome-copy">
+              <p class="eyebrow eyebrow-dark">Welcome to Cranes Mill</p>
+              <h2 id="welcome-heading">A church that feels like home.</h2>
+              <p id="welcome-body">We exist to glorify God, make disciples, and serve our community. At Cranes Mill, you'll find a place to belong, a family to grow with, and a church that cares about Canyon Lake and beyond.</p>
+              <blockquote>“For where two or three gather in my name, there am I with them.”<cite>Matthew 18:20</cite></blockquote>
+              <a class="text-link" href="#about" data-route="about">Our story <span aria-hidden="true">→</span></a>
             </div>
           </div>
+        </section>
 
-          <div>
-            <h3 class="contact-block-title">📞 Contact</h3>
-            <div class="contact-item">
-              <div class="contact-icon" aria-hidden="true">☎️</div>
-              <div class="contact-detail">
-                <a href="tel:+18308997936">(830) 899-7936</a>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon" aria-hidden="true">✉️</div>
-              <div class="contact-detail">
-                <a href="mailto:cmbccl@gvtc.com">cmbccl@gvtc.com</a>
-              </div>
-            </div>
+        <section class="events-band section-pad" aria-labelledby="home-events-title">
+          <div class="shell band-grid">
+            <div class="band-intro"><p class="eyebrow banner-label">Upcoming events</p><h2 class="banner-title display-3d" id="home-events-title"><span>Life together</span><em>makes a difference.</em></h2><p class="band-copy">Join us for worship, fellowship, and opportunities to serve our community.</p><a class="button button-light" href="#events" data-route="events">View the calendar <span aria-hidden="true">→</span></a></div>
+            <div class="event-preview-grid" id="home-events"></div>
           </div>
+        </section>
 
-          <div>
-            <h3 class="contact-block-title">🌐 Follow Us</h3>
-            <div class="contact-item">
-              <div class="contact-icon" aria-hidden="true">📘</div>
-              <div class="contact-detail">
-                <a href="https://www.facebook.com/CMBCCL/" target="_blank" rel="noopener noreferrer">
-                  Facebook — @CMBCCL
-                </a>
-              </div>
+        <section class="feature-links section-pad" aria-label="More ways to connect">
+          <div class="shell">
+            <div class="feature-links-grid">
+              <a class="feature-link-card" href="#sermons" data-route="sermons">
+                <span class="feature-link-media"><img src="/church/IMG_20260902_151936.jpg" alt="A sermon being shared from the church pulpit" loading="lazy" /></span>
+                <span class="feature-link-body"><span class="eyebrow eyebrow-dark">Sermons</span><strong>Messages for real life.</strong><span class="feature-link-action">Watch now <span aria-hidden="true">→</span></span></span>
+              </a>
+              <a class="feature-link-card" href="#contact" data-route="contact">
+                <span class="feature-link-media"><img src="/church/20260913_111540.jpg" alt="A church member speaking from the pulpit" loading="lazy" /></span>
+                <span class="feature-link-body"><span class="eyebrow eyebrow-dark">Prayer requests</span><strong>We are here to pray with you.</strong><span class="feature-link-action">Share a request <span aria-hidden="true">→</span></span></span>
+              </a>
+              <a class="feature-link-card" href="#ministries" data-route="ministries">
+                <span class="feature-link-media"><img src="/church/20260913_105819.jpg" alt="Church family serving together" loading="lazy" /></span>
+                <span class="feature-link-body"><span class="eyebrow eyebrow-dark">Get involved</span><strong>Find your place to serve.</strong><span class="feature-link-action">Explore ministries <span aria-hidden="true">→</span></span></span>
+              </a>
             </div>
           </div>
+        </section>
+
+        <section class="gallery-section section-pad" aria-labelledby="gallery-title">
+          <div class="shell"><div class="section-heading"><div><p class="eyebrow eyebrow-dark banner-label">Church life</p><h2 class="banner-title display-3d" id="gallery-title">A glimpse of our family.</h2></div><p class="banner-copy">These are the people and moments that make Cranes Mill home.</p></div><div class="gallery-grid" id="gallery-grid"></div><a class="text-link" href="#contact" data-route="contact">Come see for yourself <span aria-hidden="true">→</span></a></div>
+        </section>
+        <dialog class="gallery-dialog" id="gallery-dialog" aria-labelledby="gallery-dialog-caption"><button class="dialog-close" type="button" data-gallery="close" aria-label="Close photo viewer">Close</button><button class="dialog-arrow dialog-previous" type="button" data-gallery="previous" aria-label="Previous photo">Previous</button><figure><img id="gallery-dialog-image" alt="" /><figcaption id="gallery-dialog-caption"></figcaption></figure><button class="dialog-arrow dialog-next" type="button" data-gallery="next" aria-label="Next photo">Next</button></dialog>
+      </section>
+
+      <section id="about-view" class="view inner-view" data-view="about" hidden>
+        <div class="shell page-intro"><p class="eyebrow banner-label">About us</p><h1 class="display-3d">A family around the cross.</h1><p>We are a Bible-believing church committed to worshiping God, loving people, and serving our community with the hope of Jesus Christ.</p></div>
+        <div class="shell about-grid"><figure class="image-frame tall"><img src="/church/web%201.jpeg" alt="Cranes Mill Baptist Church beneath the live oaks" loading="lazy" /></figure><div class="about-story"><h2 class="display-3d">Belong. Grow. Serve.</h2><p>Whether you are visiting for the first time, returning to church, or looking for a place to grow, you are welcome here. Our gatherings are warm, our teaching is grounded in Scripture, and our ministries are built around real relationships.</p><div class="value-list"><article><strong>Belong</strong><p>Find a church family where you can be known and cared for.</p></article><article><strong>Grow</strong><p>Learn the Word, ask honest questions, and deepen your faith.</p></article><article><strong>Serve</strong><p>Use your gifts to love neighbors and strengthen Canyon Lake.</p></article></div></div></div>
+      </section>
+
+      <section id="ministries-view" class="view inner-view" data-view="ministries" hidden>
+        <div class="shell page-intro"><p class="eyebrow banner-label">Ministries</p><h1 class="display-3d">There is room for you here.</h1><p>Explore ways to connect across generations and seasons of life.</p></div>
+        <div class="shell ministry-grid" id="ministry-list"></div>
+      </section>
+
+      <section id="sermons-view" class="view inner-view" data-view="sermons" hidden>
+        <div class="shell page-intro"><p class="eyebrow banner-label">Sermons</p><h1 class="display-3d">Messages for real life.</h1><p>Watch the latest messages from Cranes Mill Baptist Church on YouTube, or browse the archive below.</p></div>
+        <div class="shell youtube-embed-panel">
+          <div class="youtube-embed-frame">
+            <iframe title="Cranes Mill Baptist Church on YouTube" src="https://www.youtube.com/embed/videoseries?list=UU1GvLLLIepxAw-oeskNoTRw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+          <p class="youtube-embed-note"><a class="text-link" id="youtube-channel-link" href="https://www.youtube.com/@cranesmillbaptistchurch2673/videos" target="_blank" rel="noreferrer">Open the full YouTube channel <span aria-hidden="true">↗</span></a></p>
         </div>
+        <div class="shell sermon-list" id="sermon-list"></div>
+      </section>
 
-        <div class="contact-map">
-          <iframe
-            src="https://www.google.com/maps?q=10215+FM+2673+Canyon+Lake+TX+78133&output=embed"
-            width="100%"
-            height="100%"
-            style="border:0; min-height: 360px;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Cranes Mill Baptist Church location"
-          ></iframe>
+      <section id="events-view" class="view inner-view" data-view="events" hidden>
+        <div class="shell page-intro"><p class="eyebrow banner-label">Events</p><h1 class="display-3d">Life together, on the calendar.</h1><p>Find worship, fellowship, and service opportunities for the whole church family.</p></div>
+        <div class="shell calendar-layout"><div class="calendar-card"><div class="calendar-toolbar"><button type="button" class="icon-button" data-calendar="previous" aria-label="Previous month">←</button><h2 id="calendar-title">Calendar</h2><button type="button" class="icon-button" data-calendar="next" aria-label="Next month">→</button></div><div class="calendar-weekdays" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-grid" id="calendar-grid"></div></div><aside class="event-list-panel"><p class="eyebrow banner-label">This month</p><h2 class="display-3d">What is happening</h2><div id="event-list"></div></aside></div>
+      </section>
+
+      <section id="give-view" class="view inner-view" data-view="give" hidden>
+        <div class="shell page-intro"><p class="eyebrow banner-label">Give</p><h1 class="display-3d">Generosity helps love travel farther.</h1><p>Your giving supports worship, discipleship, children, and practical care for our neighbors.</p></div>
+        <div class="shell give-grid"><div class="give-card give-card-dark"><p class="eyebrow">Give with purpose</p><h2>Every gift helps Cranes Mill serve faithfully.</h2><p id="giving-body">For the current giving options, please contact the church office. We will make sure your gift reaches the right ministry.</p><a class="button button-primary" href="mailto:cmbccl@gvtc.com?subject=Giving%20at%20Cranes%20Mill">Contact the church</a></div><div class="give-card"><span class="large-cross" aria-hidden="true">+</span><h2>Thank you for investing in our community.</h2><p>We are grateful for every act of generosity, prayer, and service.</p><a class="text-link" href="#contact" data-route="contact">Plan a visit <span aria-hidden="true">→</span></a></div></div>
+      </section>
+
+      <section id="contact-view" class="view inner-view" data-view="contact" hidden>
+        <div class="shell page-intro"><p class="eyebrow banner-label">Plan your visit</p><h1 class="display-3d">We would love to meet you.</h1><p>Come as you are. Send a note ahead of time, or simply join us this Sunday.</p></div>
+        <div class="shell contact-grid"><div class="contact-panel"><h2 class="display-3d">Find us in Canyon Lake.</h2><p id="site-address">10215 FM 2673, Canyon Lake, TX 78133</p><p><a id="site-phone" href="tel:+18308997936">(830) 899-7936</a><br /><a id="site-email" href="mailto:cmbccl@gvtc.com">cmbccl@gvtc.com</a></p><a class="text-link" href="https://maps.google.com/?q=10215+FM+2673+Canyon+Lake+TX" target="_blank" rel="noreferrer">Get directions <span aria-hidden="true">↗</span></a><div class="service-times"><strong>Weekly worship</strong><span id="site-worship-time">Sunday worship · 11:00 AM</span><span>Ask the office about current small-group times.</span></div></div><form class="prayer-form" id="prayer-form"><p class="eyebrow banner-label">Prayer or welcome note</p><h2 class="display-3d">How can we pray with you?</h2><label for="request-name">Name</label><input id="request-name" name="name" required maxlength="80" autocomplete="name" /><label for="request-email">Email <span>(optional)</span></label><input id="request-email" name="email" type="email" maxlength="160" autocomplete="email" /><label for="request-message">Your message</label><textarea id="request-message" name="message" required maxlength="2000" rows="5"></textarea><button class="button button-dark" type="submit">Send prayer note</button><p class="form-status" id="prayer-status" role="status"></p></form></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="shell footer-grid"><div><a class="brand footer-brand" href="#home" data-route="home"><span class="brand-mark" aria-hidden="true"><span></span></span><span class="brand-copy"><strong>Cranes Mill</strong><small>Baptist Church</small></span></a><p>A family. A place to belong. A greater purpose.</p></div><div><strong>Visit</strong><p id="footer-address">10215 FM 2673, Canyon Lake, TX 78133</p></div><div><strong>Connect</strong><p><a id="footer-phone" href="tel:+18308997936">(830) 899-7936</a><br /><a id="footer-email" href="mailto:cmbccl@gvtc.com">cmbccl@gvtc.com</a></p></div><div><strong>Follow us</strong><div class="social-links" id="social-links" aria-label="Social media links"></div></div></div><div class="shell footer-bottom"><span>© 2026 Cranes Mill Baptist Church</span><a href="#contact" data-route="contact">Contact the church</a></div></footer>
+    <dialog class="map-dialog" id="map-dialog" aria-labelledby="map-dialog-title">
+      <div class="map-dialog-header">
+        <div>
+          <p class="eyebrow banner-label" id="map-dialog-title">Find us</p>
+          <h2>Cranes Mill Baptist Church</h2>
+          <p>10215 FM 2673, Canyon Lake, TX 78133</p>
         </div>
+        <button class="dialog-close" type="button" id="close-map" aria-label="Close map">Close</button>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo" aria-hidden="true">C</div>
-        <span class="footer-name">Cranes Mill Baptist Church</span>
+      <div class="map-dialog-frame">
+        <iframe title="Map of Cranes Mill Baptist Church" src="https://maps.google.com/maps?q=Cranes%20Mill%20Baptist%20Church%2010215%20FM%202673%20Canyon%20Lake%20TX%2078133&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
-      <div class="footer-links">
-        <a href="#about" class="footer-link">About</a>
-        <a href="#services" class="footer-link">Services</a>
-        <a href="#ministries" class="footer-link">Ministries</a>
-        <a href="#community" class="footer-link">Community</a>
-        <a href="#contact" class="footer-link">Contact</a>
+      <p class="map-dialog-actions"><a class="text-link" href="https://maps.google.com/?q=Cranes+Mill+Baptist+Church+10215+FM+2673+Canyon+Lake+TX+78133" target="_blank" rel="noreferrer">Open in Google Maps <span aria-hidden="true">↗</span></a></p>
+    </dialog>
+    <aside class="site-player" id="site-player" hidden aria-label="Church music player">
+      <audio id="site-audio" preload="metadata"></audio>
+      <button class="site-player-toggle" type="button" id="player-toggle" aria-pressed="false" aria-label="Play music">▶</button>
+      <div class="site-player-copy">
+        <strong id="player-title">Church music</strong>
+        <small id="player-artist">Tap play to listen</small>
       </div>
-      <div class="footer-copy">
-        &copy; 2026 Cranes Mill Baptist Church · Canyon Lake, TX · All rights reserved
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===== SCRIPTS ===== -->
-  <script>
-    // Mobile nav toggle
-    const toggle = document.getElementById('nav-toggle');
-    const links = document.getElementById('nav-links');
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open);
-    });
-
-    // Close mobile nav on link click
-    links.querySelectorAll('.nav-link, .nav-cta').forEach(link => {
-      link.addEventListener('click', () => {
-        links.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // Scroll reveal
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        }
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
-    );
-    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-  </script>
-
-</body>
+      <button class="site-player-next" type="button" id="player-next" aria-label="Next track" hidden>⏭</button>
+    </aside>
+    <script type="module" src="/scripts/app.js?v=20261008f"></script>
+  </body>
 </html>

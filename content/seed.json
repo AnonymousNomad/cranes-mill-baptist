@@ -1,0 +1,82 @@
+{
+  "site": {
+    "church_name": "Cranes Mill Baptist Church",
+    "address": "10215 FM 2673, Canyon Lake, TX 78133",
+    "phone": "(830) 899-7936",
+    "email": "cmbccl@gvtc.com",
+    "facebook_url": "https://www.facebook.com/CMBCCL/",
+    "instagram_url": "",
+    "youtube_url": "",
+    "worship_time": "Sunday worship · 11:00 AM",
+    "welcome_heading": "Cranes Mill Baptist Church",
+    "welcome_body": "We exist to glorify God, make disciples, and serve our community. At Cranes Mill, you'll find a place to belong, a family to grow with, and a church that cares about Canyon Lake and beyond.",
+    "giving_body": "For the current giving options, please contact the church office. We will make sure your gift reaches the right ministry."
+  },
+  "ministries": [
+    {
+      "title": "Worship",
+      "summary": "Gather with us to sing, pray, and hear the Word together.",
+      "action_label": "Join us Sunday",
+      "action_route": "contact"
+    },
+    {
+      "title": "Children",
+      "summary": "A safe, joyful place for children to learn about Jesus and grow in friendship.",
+      "action_label": "Ask about children",
+      "action_route": "contact"
+    },
+    {
+      "title": "Community",
+      "summary": "Neighbor-to-neighbor service, fellowship, and practical care for Canyon Lake.",
+      "action_label": "See opportunities",
+      "action_route": "events"
+    },
+    {
+      "title": "Prayer",
+      "summary": "Bring your needs, your gratitude, and your questions. We would be honored to pray with you.",
+      "action_label": "Share a request",
+      "action_route": "contact"
+    }
+  ],
+  "sermons": [
+    {
+      "title": "Sunday Worship",
+      "speaker": "Cranes Mill Baptist Church",
+      "published_on": "2026-09-13",
+      "scripture": "Psalm 100",
+      "summary": "A recent message from the worship gathering at Cranes Mill Baptist Church.",
+      "video_url": "/church/pastor%20video.mp4",
+      "image_url": "/church/IMG_20260902_151936.jpg"
+    }
+  ],
+  "events": [
+    {
+      "title": "Sunday Worship",
+      "event_date": "2026-10-11",
+      "event_time": "11:00 AM",
+      "location": "Cranes Mill Baptist Church",
+      "description": "Weekly worship gathering. Confirm the current schedule with the church office."
+    },
+    {
+      "title": "Community Prayer",
+      "event_date": "2026-10-14",
+      "event_time": "6:30 PM",
+      "location": "Cranes Mill Baptist Church",
+      "description": "A time to pray together for our church and our neighbors."
+    },
+    {
+      "title": "Lake Cleanup",
+      "event_date": "2026-10-17",
+      "event_time": "8:00 AM",
+      "location": "Canyon Lake",
+      "description": "Serve our community together. Confirm details before publishing."
+    },
+    {
+      "title": "Sunday Worship",
+      "event_date": "2026-10-18",
+      "event_time": "11:00 AM",
+      "location": "Cranes Mill Baptist Church",
+      "description": "Weekly worship gathering. Confirm the current schedule with the church office."
+    }
+  ]
+}
